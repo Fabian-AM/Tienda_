@@ -2,6 +2,7 @@ package com.Tienda.service;
 
 import com.Tienda.domain.Producto;
 import java.util.List;
+import org.springframework.data.repository.query.Param;
 
 public interface ProductoService {
 
@@ -16,4 +17,10 @@ public interface ProductoService {
 
 //Metodo de eliminar
     public void delete(Producto producto);
+
+    public List<Producto> findByPrecioBetweenOrderByDescripcion(double precioInf, double precioSup);
+
+     public List<Producto> metodoJPQL(@Param("precioInf") double precioInf, @Param("precioSup") double precioSup);
+     
+     public List<Producto> metodoNativo(@Param("precioInf") double precioInf, @Param("precioSup") double precioSup); 
 }
